@@ -1,4 +1,7 @@
 line = h:Hanzi DIV p:Pinyins DIV t:Translation {
+    if(h.length !== p.pinyin.length) 
+        throw `error: size of hanzi and pinyin doesn't match! ${h.join()} and ${p.pinyin.join()}`;
+    
     return {
         hanzi:  h,
         pinyin: p.pinyin,

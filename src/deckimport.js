@@ -35,7 +35,9 @@ class DeckImport {
                 try {
                     card = parser.parse(v);
                 } catch(e) {
-                    this.messages.push(`row ${i}: ${e}`);
+                    // i+2 because the title is row 0 and i starts with 0
+                    this.messages.push(`row ${i+2}: ${e}`);
+                    this.messages.push(`in line: ${v}`);
                 }
                 return card;
             });
@@ -150,7 +152,7 @@ class DeckImport {
                             ${repeat(
                                 this.messages,
                                 (_, i) => i,
-                                (msg) => msg
+                                (msg) => html`<div>${msg}</div>`
                             )}
                         </td>
                     </tr>
